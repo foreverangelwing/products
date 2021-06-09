@@ -1,4 +1,4 @@
-# 建立記帳程式專案(+二維清單)
+# 寫入欄位名稱 + 編碼問題
 
 products =[]
 while True:
@@ -6,9 +6,14 @@ while True:
 	if name == 'q':
 		break
 	price = input('輸入商品價格：')
+	price = int(price)
 	products.append([name, price])
 print(products)
 
 for p in products:
 	print(p[0], '的價格是', p[1])
 
+with open('products.csv', 'w', encoding='utf-8') as f:
+	f.write('商品,價格\n')
+	for p in products:
+		f.write(p[0] + ',' + str(p[1]) + '\n')
